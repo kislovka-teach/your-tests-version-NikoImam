@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "http": {
+    "VariantOneHttp": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
