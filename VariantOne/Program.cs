@@ -1,7 +1,4 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.EntityFrameworkCore;
 using VariantOne.Abstractions;
-using VariantOne.DbContexts;
 using VariantOne.Entities;
 using VariantOne.Extensioins;
 

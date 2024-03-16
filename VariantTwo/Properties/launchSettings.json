@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "http": {
+    "VariantTwoHttp": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

@@ -706,3 +706,4 @@ FodyWeavers.xsd
 
 # End of https://www.toptal.com/developers/gitignore/api/aspnetcore,csharp,visualstudio
 /VariantOne/appsettings.Development.json
+/VariantTwo/appsettings.Development.json
