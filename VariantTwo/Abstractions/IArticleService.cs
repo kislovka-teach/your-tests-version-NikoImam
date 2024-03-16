@@ -9,6 +9,6 @@ namespace VariantTwo.Abstractions
         public Task AddComment(Comment comment);
 
         [Authorize]
-        public Task Vote(int id);
+        public Task<IResult> Vote(int id, HttpContext context);
     }
 }

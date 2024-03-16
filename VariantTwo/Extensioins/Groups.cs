@@ -61,9 +61,9 @@ namespace VariantTwo.Extensioins
                 return Results.Ok();
             });
 
-            builder.MapPost("/{id:int}/vote", [Authorize(Roles = "User")] async (int id, IArticleService articleService) =>
+            builder.MapPut("/{id:int}/vote", [Authorize(Roles = "User")] async (int id, HttpContext context, IArticleService articleService) =>
             {
-                await articleService.Vote(id);
+                return await articleService.Vote(id, context);
             });
 
             return builder;

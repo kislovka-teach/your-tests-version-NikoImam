@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using VariantTwo.DbContexts;
@@ -11,9 +12,11 @@ using VariantTwo.DbContexts;
 namespace VariantTwo.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20240316145023_Seed_Data_1")]
+    partial class Seed_Data_1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,19 +61,6 @@ namespace VariantTwo.Migrations
                     b.HasIndex("CarId");
 
                     b.ToTable("Articles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AuthorId = 1,
-                            CarId = 1,
-                            PublishDate = new DateOnly(2024, 3, 16),
-                            Rating = 0,
-                            Text = "KDjnvfkdnjvnjfedvkjnfdkvlnljrsdvlanfvlaeh aei ufhae",
-                            Title = "Ремонт хрома",
-                            Topic = "Ремонт"
-                        });
                 });
 
             modelBuilder.Entity("VariantTwo.Entities.Car", b =>
@@ -106,28 +96,6 @@ namespace VariantTwo.Migrations
                     b.HasIndex("OwnerId");
 
                     b.ToTable("Cars");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CarModelId = 2,
-                            Color = "White",
-                            HorsePowers = 130,
-                            OwnerId = 1,
-                            PowerPlant = 0,
-                            Year = 2003
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CarModelId = 3,
-                            Color = "Silver",
-                            HorsePowers = 210,
-                            OwnerId = 1,
-                            PowerPlant = 0,
-                            Year = 1994
-                        });
                 });
 
             modelBuilder.Entity("VariantTwo.Entities.CarModel", b =>
@@ -193,15 +161,6 @@ namespace VariantTwo.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Comments");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ArticleId = 1,
-                            Text = "Норм",
-                            UserId = 1
-                        });
                 });
 
             modelBuilder.Entity("VariantTwo.Entities.User", b =>

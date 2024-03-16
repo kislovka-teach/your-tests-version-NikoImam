@@ -11,10 +11,12 @@ namespace VariantTwo.Services
     {
         IMapper _mapper;
         ApplicationContext _applicationContext;
-        public ArticleService(IMapper mapper, ApplicationContext applicationContext)
+        IUserService _userService;
+        public ArticleService(IMapper mapper, ApplicationContext applicationContext, IUserService userService)
         {
             _mapper = mapper;
             _applicationContext = applicationContext;
+            _userService = userService;
         }
 
         public async Task AddComment(Comment comment)
@@ -23,11 +25,14 @@ namespace VariantTwo.Services
             await _applicationContext.SaveChangesAsync();
         }
 
-        public async Task Vote(int id)
+        public async Task<IResult> Vote(int id, HttpContext context)
         {
+            var i = await _userService.GetUserId(context);
             var article = await _applicationContext.Articles.FirstOrDefaultAsync(x => x.Id == id);
+            if (article!.AuthorId == i) return Results.BadRequest();
             article!.Rating++;
             await _applicationContext.SaveChangesAsync();
+            return Results.Ok();
         }
     }
 }
